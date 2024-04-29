@@ -24,9 +24,6 @@ class ProductController extends AbstractController
     {
         $product = $this->mapper->map($dto, new Product());
 
-        dump($dto);
-        dump($product);
-
         $this->em->persist($product);
         $this->em->flush();
 
