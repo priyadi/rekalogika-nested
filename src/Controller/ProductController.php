@@ -29,4 +29,14 @@ class ProductController extends AbstractController
 
         return $this->json($this->mapper->map($product, $dto));
     }
+
+    #[Route('/product/{{productId}}', methods: ['PUT'])]
+    public function put(Product $product, #[MapRequestPayload] ProductDto $dto): JsonResponse
+    {
+        $product = $this->mapper->map($dto, $product);
+
+        $this->em->flush();
+
+        return $this->json($this->mapper->map($product, $dto));
+    }
 }
