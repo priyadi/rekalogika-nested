@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Rekalogika\Mapper\Attribute\AllowDelete;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -32,6 +33,7 @@ class Product
      * @var Collection<int, Colour>
      */
     #[ORM\ManyToMany(targetEntity: Colour::class)]
+    #[AllowDelete]
     private Collection $colours;
 
     public function __construct()
